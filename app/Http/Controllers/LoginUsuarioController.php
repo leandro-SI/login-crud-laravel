@@ -44,8 +44,7 @@ class LoginUsuarioController extends Controller
 
         if (Auth::attempt($credenciais))
         {
-
-            return 'Login ok';
+            return redirect('/produtos');
         }
         else
         {
