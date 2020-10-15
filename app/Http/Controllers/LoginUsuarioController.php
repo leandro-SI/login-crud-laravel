@@ -30,7 +30,7 @@ class LoginUsuarioController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return 'Completado';
+        return redirect('/');
 
     }
 

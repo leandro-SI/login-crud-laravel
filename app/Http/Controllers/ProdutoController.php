@@ -3,11 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Produtos;
 
 class ProdutoController extends Controller
 {
+
+    public function verificarLogin()
+    {
+        if (Auth::check())
+        {
+            $user = Auth::user();
+        }
+        else
+        {
+            redirect('/registrar');
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +29,8 @@ class ProdutoController extends Controller
      */
     public function index()
     {
+        ProdutoController::verificarLogin();
+
         $prods = Produtos::all();
 
         return view('index', compact('prods'));
@@ -27,7 +43,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-
+        ProdutoController::verificarLogin();
         return view('novo');
     }
 
@@ -39,12 +55,13 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
+        ProdutoController::verificarLogin();
         $prod = new Produtos();
         $prod->nome = $request->input('nome');
         $prod->codigo = $request->input('codigo');
         $prod->preco = $request->input('preco');
         $prod->quantidade = $request->input('quantidade');
-        $prod->usuario_id = 1;
+        $prod->usuario_id = Auth::user()->id;
         $prod->save();
 
         return redirect('/produtos');
@@ -69,6 +86,8 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
+        ProdutoController::verificarLogin();
+
         $prod = Produtos::find($id);
 
         if (isset($id))
@@ -87,6 +106,8 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        ProdutoController::verificarLogin();
+
         $produto = Produtos::find($id);
 
         if (isset($produto))
@@ -109,6 +130,8 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
+        ProdutoController::verificarLogin();
+        
         $prod = Produtos::find($id);
 
         if (isset($id))
