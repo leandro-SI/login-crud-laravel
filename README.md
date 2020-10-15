@@ -1,3 +1,31 @@
+
+<strong>Passos para abrir o projeto:</strong>
+
+- instalação do composer através do site: https://getcomposer.org/
+- instalação do node.js através do site: https://nodejs.org/en/download/
+- baixe o projeto e abra em seu editor
+- abra o arquivo do projeto (.env.example) e edite as seguintes informações:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=teste_laravel
+DB_USERNAME={de acordo com a o user do seu banco}
+DB_PASSWORD={de acordo com a senha de seu banco}
+
+- copie e cole este arquivo (.env.example) e apague o .example.
+- crie um banco de dados mysql com o nome: teste_laravel
+- abra um terminal do seu editor de código ou no próprio cmd dentro da pasta do projeto e digite os comandos:
+•	npm install
+•	composer install
+•	php artisan migrate
+•	php artisan key:generate
+•	php artisan serve
+- se tudo estiver correto no último comando, ira te mostrar a url para você acessar o projeto pela url de seu navegador.
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
