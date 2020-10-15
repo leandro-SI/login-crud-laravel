@@ -17,3 +17,8 @@ Route::get('/', function () {
     //return view('Welcome');
     return view('LoginUser');
 });
+
+Route::post('/registrar','LoginUsuarioController@RegistroUsuario');
+
+Route::post('/verificar','LoginUsuarioController@LoginUsuario');
+

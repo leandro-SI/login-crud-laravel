@@ -29,7 +29,9 @@
                                 <h1>Bem vindo</h1>
                             </div>
                             <div class="login-form">
-                                <form>
+                                @include('error')
+                                <form action="{{url('/registrar')}}" method="POST">
+                                    {{csrf_field()}}
                                     <div class="form-details">
                                         <label class="user">
                                             <input type="text" name="nome" placeholder="Nome" id="nome">
@@ -38,7 +40,7 @@
                                             <input type="email" name="email" placeholder="E-mail" id="email">
                                         </label>
                                         <label class="pass">
-                                            <input type="password" name="senha" placeholder="Senha" id="senha">
+                                            <input type="password" name="password" placeholder="Senha" id="password">
                                         </label>
                                     </div>
                                     <button type="submit" class="form-btn" >Registrar</button>
@@ -52,16 +54,17 @@
                                 <h1>Bem vindo</h1>
                             </div>
                             <div class="login-form">
-                                <form>
+                                <form method="POST" action="{{url('/verificar')}}">
+                                    {{csrf_field()}}
                                     <div class="form-details">
                                         <label class="user">
                                             <input type="email" name="email" placeholder="E-mail" id="email">
                                         </label>
                                         <label class="pass">
-                                            <input type="password" name="senha" placeholder="Senha" id="senha">
+                                            <input type="password" name="password" placeholder="Senha" id="password">
                                         </label>
                                     </div>
-                                    <button type="submit" class="form-btn" onsubmit="">Entrar</button>
+                                    <button type="submit" class="form-btn">Entrar</button>
                                 </form>
                             </div>
                         </div>
